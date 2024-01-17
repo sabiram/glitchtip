@@ -1,35 +1,40 @@
 version: "3.4"
+
 x-environment: &default-environment
-  DATABASE_URL: postgres://postgres:postgres@postgres:15432/postgres
-  SECRET_KEY: change_me
-  PORT: 8000
+  DATABASE_URL: "postgres://postgres:56%^tyTY@postgres:5432/postgres"
+  SECRET_KEY: "Kjidgtcdjkm@fdjkHGyhdguhsjnjbj"
+  PORT: "8000"
+
 x-depends_on: &default-depends_on
   - postgres
   - redis
+
 services:
   postgres:
-    image: postgres:12
+    image: postgres:14
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     restart: unless-stopped
-    ports: 
-        - "15432:5432"
+
   redis:
     image: redis
     restart: unless-stopped
+
   web:
     image: glitchtip/glitchtip
     depends_on: *default-depends_on
     ports:
-      - "8001:8000"
+      - "8000:8000"
     environment: *default-environment
     restart: unless-stopped
+
   worker:
     image: glitchtip/glitchtip
-    command: celery -A glitchtip worker -B -l INFO
+    command: "./bin/run-celery-with-beat.sh"
     depends_on: *default-depends_on
     environment: *default-environment
     restart: unless-stopped
+
   migrate:
     image: glitchtip/glitchtip
     depends_on: *default-depends_on
