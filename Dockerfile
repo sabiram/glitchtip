@@ -13,8 +13,6 @@ COPY docker-compose.yml /app/docker-compose.yml
 EXPOSE 8000
 
 # (Optional) Set environment variables
-ENV DATABASE_URL="postgres://glitchtip_user:HtydERfs2FG#Jht@3.110.139.17:5432/postgres"
-ENV SECRET_KEY="Kjidgtcdjkm@fdjkHGyhdguhsjnjbj"
 
 # (Optional) Set a default command to run when the container starts
 # CMD ["./docker-compose", "up"]
