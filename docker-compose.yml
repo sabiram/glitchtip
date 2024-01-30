@@ -1,7 +1,7 @@
 version: "3.4"
 
 x-environment: &default-environment
-  DATABASE_URL: "postgres://postgres:56%^tyTY@postgres:5432/postgres"
+  DATABASE_URL: "postgres://glitchtip_user:HtydERfs2FG#Jht@3.110.139.17:5432/postgres"
   SECRET_KEY: "Kjidgtcdjkm@fdjkHGyhdguhsjnjbj"
   PORT: "8000"
 
