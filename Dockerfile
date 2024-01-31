@@ -1,8 +1,8 @@
 # Use an official GlitchTip image as the base image
 FROM glitchtip/glitchtip:latest
 
-# Install dependencies (if needed)
-# RUN apt-get update && apt-get install -y ...
+# Switch to root user to perform actions that require higher privileges
+USER root
 
 # Set the working directory
 WORKDIR /app
@@ -12,6 +12,9 @@ COPY start.sh /app/start.sh
 
 # Ensure start.sh is executable
 RUN chmod +x /app/start.sh
+
+# Switch back to a non-root user if necessary
+USER glitchtipuser
 
 # (Optional) Expose any necessary ports
 EXPOSE 8000
