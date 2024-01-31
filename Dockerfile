@@ -11,8 +11,8 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /code
 RUN curl -sSL https://install.python-poetry.org | python3 -
-COPY poetry.lock pyproject.toml /code/
-RUN $POETRY_HOME/bin/poetry install --no-interaction --no-ansi $(test "$IS_CI" = "True" && echo "--no-dev")
+#COPY poetry.lock pyproject.toml /code/
+#RUN $POETRY_HOME/bin/poetry install --no-interaction --no-ansi $(test "$IS_CI" = "True" && echo "--no-dev")
 
 FROM python:3.12-slim
 ARG GLITCHTIP_VERSION=local
