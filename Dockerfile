@@ -2,7 +2,7 @@
 FROM glitchtip/glitchtip:latest
 
 # Switch to root user to perform actions that require higher privileges
-RUN whoami
+USER root
 
 # Set the working directory
 WORKDIR /app
@@ -13,8 +13,8 @@ COPY start.sh /app/start.sh
 # Ensure start.sh is executable
 RUN chmod +x /app/start.sh
 
-# Switch back to a non-root user if necessary
-USER glitchtipuser
+# Switch to the non-root user 'app'
+USER app
 
 # (Optional) Expose any necessary ports
 EXPOSE 8000
