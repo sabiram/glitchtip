@@ -2,7 +2,7 @@
 FROM glitchtip/glitchtip:latest
 
 # Switch to root user to perform actions that require higher privileges
-USER root
+RUN whoami
 
 # Set the working directory
 WORKDIR /app
