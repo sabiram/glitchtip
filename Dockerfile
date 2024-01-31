@@ -5,7 +5,7 @@ FROM glitchtip/glitchtip:latest
 #USER root
 
 # only if you need celery 
-RUN useradd -ms /bin/bash celery 
+#RUN useradd -ms /bin/bash celery 
 COPY ./start.sh /usr/local/bin/start.sh
 
 # Adds our application code to the image
