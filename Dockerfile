@@ -8,8 +8,8 @@ FROM glitchtip/glitchtip:latest
 # COPY ./start.sh /usr/local/bin/start.sh
 
 # Adds our application code to the image
-COPY . code
-WORKDIR code
+#COPY . code
+#WORKDIR code
 
 # (Optional) Expose any necessary ports
 EXPOSE 8000
@@ -17,5 +17,5 @@ EXPOSE 8000
 # (Optional) Set environment variables
 
 # Set a default command to run when the container starts
-CMD ["bash", "-c", "start.sh"]
+#CMD ["bash", "-c", "start.sh"]
 
