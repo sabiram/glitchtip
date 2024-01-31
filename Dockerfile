@@ -2,19 +2,18 @@
 FROM glitchtip/glitchtip:latest
 
 # Switch to root user to perform actions that require higher privileges
-USER root
+#USER root
 
-# Set the working directory
-WORKDIR /app
+# only if you need celery 
+#RUN useradd -ms /bin/bash celery 
+COPY ./start.sh /app/start.sh
 
-# Copy the start.sh script
-COPY start.sh /app/start.sh
+# Adds our application code to the image
+COPY . code
+WORKDIR code
+# set proper file permissions
 
-# Ensure start.sh is executable
-RUN chmod +x /app/start.sh
-
-# Switch to the non-root user 'app'
-USER app
+RUN chmod u+x /app/start.sh
 
 # (Optional) Expose any necessary ports
 EXPOSE 8000
