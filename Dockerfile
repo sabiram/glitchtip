@@ -17,5 +17,5 @@ EXPOSE 8000
 # (Optional) Set environment variables
 
 # Set a default command to run when the container starts
-CMD ["bash", "-c", "/start.sh"]
+CMD ["bash", "-c", "start.sh"]
 
