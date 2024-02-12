@@ -1,16 +1,24 @@
 # Use an official GlitchTip image as the base image
 FROM glitchtip/glitchtip:latest
 
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /code
+COPY ./start.sh /usr/local/bin/start.sh
+
+# Adds our application code to the image
+COPY . code
+WORKDIR code
+# set proper file permissions
+
+RUN chmod u+x /usr/local/bin/start.sh
+
+EXPOSE 8001
 
 
-EXPOSE 8080
-
-COPY . /code/
-
-
-#RUN useradd -u 5000 app && chown app:app /code && chown app:app /code/uploads
 #USER app:app
 
-CMD ["/code/bin/start.sh"]
+CMD ["/bin/bash", "-c", "start.sh"] 
