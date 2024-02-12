@@ -13,4 +13,4 @@ COPY . /code/
 #RUN useradd -u 5000 app && chown app:app /code && chown app:app /code/uploads
 #USER app:app
 
-CMD ["./bin/start.sh"]
+CMD ["/code/bin/start.sh"]
