@@ -1,6 +1,8 @@
 # Use an official GlitchTip image as the base image
 FROM glitchtip/glitchtip:latest
 
+RUN ls -l /var/lib/apt/lists
+
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get autoremove -y \
